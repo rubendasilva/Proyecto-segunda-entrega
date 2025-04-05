@@ -1,1 +1,2 @@
-# Proyecto-segunda-entrega
+En esta entrega queria generar un ranking mas real en el local storage, pero con el sistema que tenia de generar los tiempos de carrera no se iban a generar tiempos de carrera diferentes. Entonces hice que los tiempos se genere con dependiendo de cuantos clicks se presione en un intervalo de 10 segundos en el boton "Race" que luego de ser precionado la primera vez, cambia a "Haz click rapido" luego de los 10 segundos te sale un modal con el resultado, y te muestra el ranking, que al principio tiene 3 jugadores predeterminados, pero luego de cada juego va guardando los resultados en el local storage y los obtiene para generar un ranking con tus tiempos reales.
+Espero que te divierta :)
