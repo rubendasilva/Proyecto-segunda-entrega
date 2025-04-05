@@ -25,23 +25,22 @@ const jugadoresHardMap = [
 let clics = 0;
 let carreraEnCurso = false;
 
-// Leer el ranking desde el localStorage
+// Cargar Ranking desde LS
 function cargarRanking() {
     const rankingGuardado = localStorage.getItem('ranking');
     return rankingGuardado ? JSON.parse(rankingGuardado) : [];
 }
 
-// Guardar el ranking en el localStorage
+// Guardar ranking en LS
 function guardarRanking(ranking) {
     localStorage.setItem('ranking', JSON.stringify(ranking));
 }
 
-// Actualizar la tabla del ranking en el DOM
+// Actualizar rabla ranking en DOM
 function actualizarTablaRanking() {
-    const ranking = cargarRanking(); // Cargar los resultados del localStorage
-    tableBody.innerHTML = ""; // Limpiar la tabla antes de mostrar los resultados
+    const ranking = cargarRanking();
+    tableBody.innerHTML = "";
 
-    // Mostrar cada jugador en la tabla
     ranking.forEach((jugador, index) => {
         tableBody.innerHTML += `
             <tr>
@@ -52,15 +51,15 @@ function actualizarTablaRanking() {
         `;
     });
 
-    resultTable.style.display = "block"; // Mostrar la tabla con los resultados
+    resultTable.style.display = "block";
 }
 
-// Mostrar el resultado de la carrera en el modal
+// Mostrar el resultado en modal
 function mostrarResultadoEnModal(vehiculoName, vehiculo, mapaNombre, clics, tiempoFinal, jugadores) {
     const modal = document.getElementById("raceModal");
     const modalMessage = document.getElementById("raceModalMessage");
 
-    modal.style.display = "flex"; // Mostrar el modal
+    modal.style.display = "flex";
 
     modalMessage.innerHTML = `
         🏁 Carrera finalizada:<br>
@@ -71,13 +70,12 @@ function mostrarResultadoEnModal(vehiculoName, vehiculo, mapaNombre, clics, tiem
         🏆 Posición: ${jugadores.findIndex(j => j.nombre === vehiculoName) + 1}
     `;
 
-    // Al cerrar el modal
     document.getElementById("closeModal").onclick = function () {
         modal.style.display = "none";
     }
 }
 
-// Evento para iniciar la carrera
+// Empezar carrera
 boton.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -97,11 +95,11 @@ boton.addEventListener("click", (event) => {
         boton.value = "¡Haz clic rápido!";
         resultTable.style.display = "none";
 
-        // 🎵 Sonido
+        // Sonido
         countdownSound.currentTime = 0;
         countdownSound.play();
 
-        // 🎞️ Fondo animado
+        // Fondo animado
         document.body.classList.add("racing");
 
         // Mostrar cronómetro
@@ -151,26 +149,26 @@ boton.addEventListener("click", (event) => {
             const bonus = Math.min(clics * 0.15, tiempoBase * 0.9);
             const tiempoFinal = tiempoBase - bonus;
 
-            // Obtener el ranking actual
+            // cargar ranking actual
             let ranking = cargarRanking();
 
-            // Agregar el nuevo jugador al ranking
+            // pushear jugador al ranking
             ranking.push({ nombre: vehiculoName, tiempo: tiempoFinal });
 
-            // Ordenar los jugadores por tiempo
+            // Ordenar jugadores por tiempo
             ranking.sort((a, b) => a.tiempo - b.tiempo);
 
-            // Guardar el ranking actualizado en el localStorage
+            // Guardar el ranking actualizado en LS
             guardarRanking(ranking);
 
-            // 🎵 Fin de carrera
+            // Sondio fin carrera
             raceEndSound.play();
             document.body.classList.remove("racing");
 
-            // Mostrar la tabla con el ranking actualizado
+            // Mostrar tabla con ranking actualizado
             actualizarTablaRanking();
 
-            // Mostrar el resultado en el modal
+            // Mostrar el resultado en modal
             mostrarResultadoEnModal(vehiculoName, vehiculo, mapaNombre, clics, tiempoFinal, ranking);
 
             boton.value = "RACE!!!";
@@ -183,5 +181,4 @@ boton.addEventListener("click", (event) => {
     }
 });
 
-// Cargar el ranking desde el localStorage al cargar la página
 actualizarTablaRanking();
