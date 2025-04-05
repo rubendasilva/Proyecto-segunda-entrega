@@ -1,0 +1,178 @@
+body {
+    background-image: url('images/bandera.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Ocupa toda la pantalla */
+    margin: 0;
+}
+
+body.racing {
+    animation: backgroundMove 10s linear infinite;
+}
+
+h1 {}
+
+.raceForm {
+    background-color: rgba(225, 222, 170, 0.8);
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    /* Ajusta el tamaño del cartel */
+    text-align: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    /* Sombra para destacar el cartel */
+}
+
+.imagen {
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.chooseCar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.bmwBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.mercedesBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.chooseMapBox {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.facilBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.dificilBox {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text] {
+    padding: 10px 10px;
+    margin: 2px 0;
+    width: 300px;
+}
+
+input[type=submit] {
+    padding: 10px 30px;
+    background-color: rgba(255, 3, 1, 0.8);
+    font-weight: bold;
+    font-size: 2rem;
+    border-radius: 30px;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+    background-color: rgba(162, 0, 0, 0.8);
+}
+
+.raceStatus {
+    display: none;
+    text-align: center;
+}
+
+.resultTable {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: "1"
+}
+
+.progressContainer {
+    width: 100%;
+    background: #ddd;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progressBar {
+    height: 20px;
+    /* Valor explícito en vez de 100% */
+    width: 0%;
+    background-color: green;
+    transition: width 0.1s linear;
+    width: 0%;
+    background-color: green;
+}
+
+/* Modal */
+.raceModal {
+    display: none;
+    /* Ocultado por defecto */
+    position: fixed;
+    z-index: 1;
+    /* Está sobre el contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido del modal */
+.raceModalContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* Estilo para el botón de cerrar */
+.closeModal {
+    color: #aaa;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}

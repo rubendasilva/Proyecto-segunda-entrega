@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-treme Race</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="raceForm">
+        <h1>Welcome to x-Treme Race</h1>
+        <form>
+            <label for="carName"><b><u>Ingresa el nombre de tu vehiculo</u></b></label>
+            <input type="text" id="carName" placeholder="Ingresa el nombre de tu vehiculo...">
+            <br><br>
+
+            <label for="chooseCar"><b><u>Choose your car:</u></b></label><br><br>
+            <div class="chooseCar">
+                <div class="bmwBox">
+                    <img class="imagen" src="./images/bmw.jpg" alt="">
+                    <input type="radio" id="bmw" name="chooseCar" value="bmw">
+                    <label for="bmw">BMW</label>
+                </div>
+                <br>
+                <div class="mercedesBox">
+                    <img class="imagen" src="./images/mercedes.jpg" alt="">
+                    <input type="radio" id="mercedes" name="chooseCar" value="mercedes">
+                    <label for="mercedes">Mercedes</label>
+                </div>
+            </div>
+            <br><br>
+
+            <label for="chooseMap"><b><u>Choose the map:</u></b></label><br><br>
+            <div class="chooseMapBox">
+                <div class="facilBox">
+                    <img class="imagen" src="./images/carrera facil.png" alt="">
+                    <input type="radio" id="easyMap" name="chooseMap" value="easyMap">
+                    <label for="easyMap">Easy Level</label>
+                </div>
+                <br>
+                <div class="dificilBox">
+                    <img class="imagen" src="./images/carrera dificil.jpg" alt="">
+                    <input type="radio" id="hardMap" name="chooseMap" value="hardMap">
+                    <label for="hardMap">Hard Level</label>
+                </div>
+            </div>
+            <br><br>
+            <input type="submit" id="raceButton" value="RACE!!!">
+            <div id="raceStatus" class="raceStatus">
+                <p>⏳ Tiempo restante: <span id="timer">10</span>s</p>
+                <div id="progressContainer" class="progressContainer">
+                    <div id="progressBar" class="progressBar"></div>
+                </div>
+                <br>
+            </div>
+        </form>
+
+        <div id="resultTable" class="resultTable">
+            <h2>Resultados de la Carrera</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Tiempo (s)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        <div id="raceModal" class="raceModal">
+            <div class="raceModalContent">
+                <span id="closeModal" class="closeModal">&times;</span>
+                <h2>Resultado de la carrera</h2>
+                <p id="raceModalMessage"></p>
+            </div>
+        </div>
+
+    </section>
+    <audio id="countdownSound" src="./sounds/countdown.wav" preload="auto"></audio>
+    <audio id="raceEndSound" src="./sounds/race-end.wav" preload="auto"></audio>
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>
